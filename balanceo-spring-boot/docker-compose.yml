@@ -29,17 +29,18 @@ services:
       - red-app
       
   haproxy:
-    image: haproxy:2.7
+    environment:
+      - CERT1=playdomtv.me, elb.playdomtv.me
+      - EMAIL=radf0001@ce.pucmm.edu.do
+      - STAGING=false
     volumes:
-      - ./haproxy:/haproxy-override
-      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
-    links:
-      - weba
-      - webb
+      - ./haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg
     networks:
       - red-app
     ports:
-      - "80:80"
+      - '80:80'
+      - '443:443'
+    image: 'ghcr.io/tomdess/docker-haproxy-certbot:master'
 
 networks:  #bloque para las redes
   red-app:   #indicando la red definida
