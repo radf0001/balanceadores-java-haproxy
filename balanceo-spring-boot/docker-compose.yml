@@ -27,10 +27,23 @@ services:
     restart: always
     networks: #red para conectar los equipos.
       - red-app
+
+  webc: #nombre del servicio
+    build: .
+    env_file: #Indica el parametro para
+      - .env
+    environment: #variable de ambiente
+      - NOMBRE_APP=$AMBIENTE
+      - server.port=8082
+    expose:
+      - 8082
+    restart: always
+    networks: #red para conectar los equipos.
+      - red-app
       
   haproxy:
     environment:
-      - CERT1=playdomtv.me, elb.playdomtv.me
+      - CERT1=elb.playdomtv.me
       - EMAIL=radf0001@ce.pucmm.edu.do
       - STAGING=false
     volumes:
