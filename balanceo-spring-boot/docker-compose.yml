@@ -3,8 +3,7 @@ version: '3.9'
 #Bloque de servicios, indica los contenedores a utilizar.
 services:
   weba:       #nombre del servicio
-    #    build: ./practica-4
-    image: radf0001/practica-6-app-web:latest
+    build: .
     env_file: #Indica el parametro para
       - .env
     environment:    #variable de ambiente
@@ -20,8 +19,7 @@ services:
         condition: service_healthy
 
   webb: #nombre del servicio
-    #    build: ./practica-4
-    image: radf0001/practica-6-app-web:latest
+    build: .
     env_file: #Indica el parametro para
       - .env
     environment: #variable de ambiente
@@ -37,8 +35,7 @@ services:
         condition: service_healthy
 
   webc: #nombre del servicio
-#    build: ./practica-4
-    image: radf0001/practica-6-app-web:latest
+    build: .
     env_file: #Indica el parametro para
       - .env
     environment: #variable de ambiente
