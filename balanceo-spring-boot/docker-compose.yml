@@ -48,6 +48,10 @@ services:
       - STAGING=false
     volumes:
       - ./haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg
+    links:
+      - weba
+      - webb
+      - webc
     networks:
       - red-app
     ports:
